@@ -92,8 +92,6 @@ $(document).ready(function () {
             lenis.scrollTo(hash, {
                 offset: -70
             });
-
-            // Đóng menu trên mobile sau khi click (nếu đang mở)
             if ($('.navbar-collapse').hasClass('show')) {
                 $('.navbar-collapse').collapse('hide');
             }
@@ -146,7 +144,7 @@ $(document).ready(function () {
         });
     });
 
-    // Responsive AOS Delay for Process Steps (Desktop only)
+    // Responsive AOS Delay
     if (window.innerWidth >= 768) {
         $('.step-wrapper').each(function (index) {
             $(this).attr('data-aos-delay', (index + 1) * 100);
@@ -167,19 +165,16 @@ $(window).on('load', function () {
     AOS.refresh();
 });
 
-// --- LOGIC CHECK ORDER (API Google Sheets) ---
+// --- LOGIC CHECK ORDER ---
 $('#check-order-form').on('submit', function (e) {
     e.preventDefault();
 
     var code = $('#order-code').val().trim();
     var btn = $('#btn-check');
     var resultBox = $('#order-result');
-    // URL API Google Apps Script của bạn
     var apiUrl = 'https://script.google.com/macros/s/AKfycbxoZuWQ2Pv2r_r8DYUQfRYRvjnccfU50dg38R_e9vSzR6h1i8erKQuttjRrKWbM54WxaQ/exec';
 
     if (!code) return;
-
-    // 1. Loading Effect
     var originalText = btn.text();
     btn.html('<i class="fas fa-spinner fa-spin"></i> Tra cứu...').prop('disabled', true);
     resultBox.slideUp();
@@ -190,25 +185,15 @@ $('#check-order-form').on('submit', function (e) {
         method: 'GET',
         dataType: 'json',
         data: {
-            q: code // Gửi mã vận đơn lên server
+            q: code
         },
         success: function (response) {
-            console.log("Full API Response:", response); // Debug log
-
-            // Logic xử lý dữ liệu trả về 
-            // Giả định: API trả về Object dữ liệu nếu tìm thấy, hoặc null/false nếu không.
-            // Nếu API trả về cấu trúc { status: 'success', data: {...} } thì sửa lại: var data = response.data;
+            console.log("Full API Response:", response);
             const res = response;
             const data = res.data;
-
-            // Kiểm tra xem data có dữ liệu hợp lệ không (Object không rỗng)
             if (data && typeof data === 'object' && Object.keys(data).length > 0 && !data.error) {
-
                 var rowsHtml = '';
-
-                // Duyệt qua từng Key-Value trong Object trả về
                 Object.keys(data).forEach(function (key) {
-                    // Bỏ qua các key hệ thống nếu có (ví dụ 'result', 'status')
                     if (key === 'result' || key === 'status') return;
 
                     var value = data[key];
@@ -233,7 +218,6 @@ $('#check-order-form').on('submit', function (e) {
                     `;
                 });
 
-                // Render HTML Table Result
                 var html = `
                     <div class="result-card p-0" style="overflow: hidden;">
                         <div class="px-4 pt-3 pb-3 border-bottom d-flex justify-content-between align-items-center bg-white">
@@ -257,17 +241,14 @@ $('#check-order-form').on('submit', function (e) {
                 resultBox.html(html).slideDown();
 
             } else {
-                // Trường hợp API trả về thành công nhưng không có dữ liệu (Không tìm thấy đơn)
                 showNotFoundError(resultBox, code);
             }
         },
         error: function (xhr, status, error) {
             console.error("API Error:", error);
-            // Có thể API Google trả về lỗi hoặc parse JSON lỗi
             showNotFoundError(resultBox, code, "Có lỗi kết nối hoặc mã không tồn tại.");
         },
         complete: function () {
-            // Reset button dù thành công hay thất bại
             btn.text(originalText).prop('disabled', false);
         }
     });
