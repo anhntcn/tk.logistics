@@ -23,7 +23,6 @@ body {
     overflow-x: hidden;
     line-height: 1.6;
     font-size: 16px;
-    /* Thêm background pattern dạng chấm (Dot Grid) tạo cảm giác tech */
     background-image: radial-gradient(#d1d1d1 1px, transparent 1px);
     background-size: 20px 20px;
 }
@@ -118,24 +117,18 @@ ul {
     }
 }
 
-/* --- BUTTON STYLE (Theo yêu cầu của bạn) --- */
-/* Đã chỉnh display thành inline-block để hợp bố cục web */
 .btn-custom {
     background-image: linear-gradient(to right, #FF4E50 0%, #F9D423 51%, #FF4E50 100%);
     margin: 20px 0;
-    /* Canh lề trên dưới */
     padding: 12px 45px;
     text-align: center;
     text-transform: uppercase;
     transition: 0.5s;
     background-size: 200% auto;
     color: white !important;
-    /* Luôn là màu trắng */
     box-shadow: 0 10px 20px rgba(255, 78, 80, 0.3);
-    /* Bóng đổ theo tông màu nút */
     border-radius: 30px;
     display: inline-block;
-    /* Để nút bo theo nội dung, không chiếm hết dòng */
     border: none;
     font-weight: bold;
     text-decoration: none;
@@ -205,10 +198,9 @@ header.header-scrolled .navbar {
 
 .nav-link:hover {
     color: var(--accent) !important;
-    /* Hover ra màu cam */
 }
 
-/* --- CUSTOM SCROLLBAR (Thanh cuộn hiện đại) --- */
+/* --- CUSTOM SCROLLBAR --- */
 ::-webkit-scrollbar {
     width: 8px;
 }
@@ -226,13 +218,12 @@ header.header-scrolled .navbar {
     background: #555;
 }
 
-/* --- SECTIONS CONFIGURATION (Xen kẽ màu nền) --- */
+/* --- SECTIONS CONFIGURATION --- */
 section {
     padding-top: 100px;
     padding-bottom: 100px;
     position: relative;
     overflow: hidden;
-    /* Tránh tràn layout */
 }
 
 .section-title {
@@ -253,7 +244,6 @@ section {
     width: 50px;
     height: 4px;
     background: var(--accent);
-    /* Màu cam */
     margin: 20px auto 0;
     border-radius: 2px;
 }
@@ -265,7 +255,7 @@ section {
     }
 }
 
-/* 1. HERO SECTION (Nền Xám Nhạt -> Gradient Overlay) */
+/* 1. HERO SECTION */
 #hero {
     padding: 120px 0 100px 0;
     background-image: url('images/bg_banner.png');
@@ -274,30 +264,18 @@ section {
     position: relative;
 }
 
-/* Lớp phủ tối màu tạo tương phản cực mạnh */
-.hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* background: linear-gradient(135deg, rgba(0, 0, 0, 0.1) 0%, rgba(20, 20, 20, 0.2) 100%); */
-    z-index: 1;
-}
-
 .hero-container {
     z-index: 2;
-    /* Đẩy nội dung lên trên lớp phủ */
 }
 
-/* Animation ảnh nổi lềnh bềnh */
+/* Animation ảnh nổi lềnh bềnh cho đẳng cấp */
 @keyframes float {
     0% {
         transform: translateY(0px);
     }
 
     50% {
-        transform: translateY(-20px);
+        transform: translateY(-30px);
     }
 
     100% {
@@ -306,7 +284,7 @@ section {
 }
 
 .floating-anim {
-    animation: float 6s ease-in-out infinite;
+    animation: float 5s ease-in-out infinite;
 }
 
 @media (max-width: 768px) {
@@ -316,7 +294,7 @@ section {
     }
 }
 
-/* 2. PARTNERS (Nền Trắng) */
+/* 2. PARTNERS */
 #partners {
     background-color: var(--bg-white);
     padding: 40px 0;
@@ -332,17 +310,14 @@ section {
     }
 }
 
-/* 3. PROCESS (Nền Xám Nhạt) */
+/* 3. PROCESS */
 #process {
     background-color: var(--bg-main);
 }
 
-/* --- WRAPPER CHO AOS LAYOUT --- */
 .step-wrapper {
     width: 18%;
-    /* Kích thước cũ của step-box */
     position: relative;
-    /* Wrapper chịu trách nhiệm hiệu ứng AOS */
 }
 
 .step-box {
@@ -353,12 +328,10 @@ section {
     text-align: center;
     border-radius: 20px;
     width: 100%;
-    /* Fill đầy wrapper */
     height: 100%;
     position: relative;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
     transition: 0.3s;
-    /* border: 1px solid rgba(255, 255, 255, 0.5); */
 }
 
 .step-box img {
@@ -372,7 +345,6 @@ section {
     transform: translateY(-10px);
     background: rgba(255, 255, 255, 0.95);
     box-shadow: 0 20px 50px rgba(255, 142, 60, 0.15);
-    /* border-color: var(--accent); */
 }
 
 .step-box:hover img {
@@ -380,9 +352,23 @@ section {
 }
 
 .step-arrow {
-    font-size: 1.5rem;
-    color: #000;
-    padding: 0 20px;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.step-arrow .arrow-icon {
+    fill: #000;
+    transition: 0.3s;
+    width: 32px;
+    height: 32px;
+    opacity: 0.8;
+}
+
+.process-step:hover .arrow-icon {
+    fill: var(--accent);
+    opacity: 1;
 }
 
 @media (max-width: 992px) {
@@ -392,7 +378,6 @@ section {
 
     .step-wrapper {
         width: 47%;
-        /* Chuyển width responsive sang wrapper */
     }
 
     .step-arrow {
@@ -414,11 +399,16 @@ section {
 
     .step-arrow {
         display: block;
+        margin: 10px 0;
+    }
+
+    .step-arrow .arrow-icon {
         transform: rotate(90deg);
+        display: inline-block;
     }
 }
 
-/* 4. PROBLEMS (Nền Trắng) */
+/* 4. PROBLEMS */
 #problems {
     background-color: var(--bg-white);
 }
@@ -437,25 +427,20 @@ section {
     background: #fff;
     border-radius: 15px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-    /* Card shadow nhẹ */
     transition: 0.3s;
     border: 1px solid rgba(0, 0, 0, 0.02);
 }
 
 .problem-list li:hover {
     transform: translateX(10px);
-    /* Di chuyển sang phải khi hover */
     background: #fff5eb;
-    /* Nền cam rất nhạt */
     border-color: var(--accent);
 }
 
 .problem-list li::before {
     content: '\f071';
-    /* Icon cảnh báo FontAwesome */
     font-family: "Font Awesome 6 Pro";
     color: #FF4E50;
-    /* Màu đỏ cảnh báo */
     font-size: 1.2rem;
     position: absolute;
     left: 15px;
@@ -470,15 +455,8 @@ section {
     border-radius: 50%;
 }
 
-/* Ẩn số thứ tự mặc định của ol đi để dùng bullet custom */
-.problem-list {
-    list-style: none;
-    padding-left: 0;
-}
-
-/* 5. SERVICES (Nền Xám Nhạt) */
+/* 5. SERVICES  */
 #services {
-    /* Đã có nền ở body, chỗ này để transparent hoặc background pattern nhẹ nếu muốn */
     background-color: transparent;
 }
 
@@ -490,7 +468,6 @@ section {
     border-radius: 20px;
     padding: 30px;
     margin-bottom: 30px !important;
-    /* Thay thế mb-2 của bootstrap */
     transition: 0.4s ease;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
 }
@@ -499,13 +476,11 @@ section {
     transform: translateY(-5px);
     background: rgba(255, 255, 255, 0.9);
     box-shadow: 0 20px 40px rgba(255, 142, 60, 0.1);
-    /* Glow cam nhẹ */
     border-color: var(--accent);
 }
 
 #services .service-item img {
     border-radius: 15px;
-    /* box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1); */
     transition: 0.4s;
 }
 
@@ -517,7 +492,6 @@ section {
     font-family: var(--font-secondary);
     font-size: 2rem;
     font-weight: 800;
-    /* Đậm hơn */
     text-transform: uppercase;
     margin-bottom: 20px;
     position: relative;
@@ -526,7 +500,6 @@ section {
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    /* Chữ gradient */
     display: inline-block;
 }
 
@@ -553,14 +526,11 @@ section {
     width: 35px;
     height: 35px;
     background: linear-gradient(135deg, var(--accent), #FF4E50);
-    /* Gradient cam đỏ */
     color: var(--white);
     border-radius: 50%;
-    /* Tròn xoe */
     font-size: 1.2rem;
     box-shadow: 0 4px 10px rgba(255, 78, 80, 0.4);
     flex-shrink: 0;
-    /* Không bị co lại */
 }
 
 #services .service-content {
@@ -569,9 +539,8 @@ section {
 }
 
 
-/* 6. TESTIMONIALS (Nền Trắng) */
+/* 6. TESTIMONIALS */
 #testimonials {
-    /* Transparent để hiện BG Dot Grid */
     background-color: transparent;
 }
 
@@ -579,7 +548,6 @@ section {
     margin: 15px;
     padding: 40px 30px;
     border-radius: 20px;
-    /* Glassmorphism */
     background: rgba(255, 255, 255, 0.6);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -602,7 +570,6 @@ section {
     margin: 0 auto 20px;
     object-fit: cover;
     border: 4px solid #fff;
-    /* Viền trắng */
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
@@ -625,14 +592,13 @@ section {
     opacity: 1;
 }
 
-/* 7. CHECK ORDER (Nền Gradient chuyên nghiệp hơn) */
+/* 7. CHECK ORDER */
 #check-order {
     background: linear-gradient(135deg, #1a1a1a, #2c3e50);
     position: relative;
     overflow: hidden;
 }
 
-/* Hiệu ứng hạt background style Tech */
 #check-order:before {
     content: '';
     position: absolute;
@@ -648,7 +614,6 @@ section {
 #check-order .section-title {
     color: #fff;
     text-shadow: 0 0 20px rgba(255, 142, 60, 0.5);
-    /* Text glow */
 }
 
 .search-box {
@@ -656,7 +621,6 @@ section {
     max-width: 600px;
     margin: 0 auto;
     background: rgba(255, 255, 255, 0.1);
-    /* Glass */
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 50px;
@@ -686,7 +650,6 @@ section {
 }
 
 .search-box button {
-    /* Nút search bên trong input */
     position: absolute;
     right: 5px;
     top: 5px;
@@ -697,17 +660,25 @@ section {
     height: auto;
 }
 
-/* 8. CONTACT FORM (Nền Trắng) */
+@media (max-width: 550px) {
+    .search-box input {
+        padding: 15px 20px;
+    }
+
+    .search-box button {
+        padding: 0 15px;
+    }
+}
+
+/* 8. CONTACT FORM  */
 #contact {
     background-color: var(--bg-white);
 }
 
-/* Glassmorphism cho vùng form */
 #contact form {
     padding: 40px;
     border-radius: 20px;
     background: rgba(255, 255, 255, 0.5);
-    /* Nền mờ */
     border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
@@ -720,9 +691,7 @@ section {
 .form-control {
     border-radius: 30px;
     background: #fff;
-    /* Input nền trắng nổi trên form mờ */
     border: 2px solid transparent;
-    /* Chuẩn bị cho border focus */
     padding: 15px 20px;
     margin-bottom: 20px;
     font-size: 1rem;
@@ -737,7 +706,7 @@ section {
     transform: translateY(-2px);
 }
 
-/* 9. WHY CHOOSE US (Nền Xám Nhạt) */
+/* 9. WHY CHOOSE US  */
 #why-choose {
     background-color: transparent;
 }
@@ -749,9 +718,7 @@ section {
     border-radius: 20px;
     padding: 50px 30px !important;
     border: 1px solid rgba(255, 255, 255, 0.5);
-    /* Glass border */
     transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    /* Hiệu ứng nhún nhảy */
 }
 
 #why-choose .bg-white:hover {
@@ -770,10 +737,9 @@ section {
 
 #why-choose .bg-white:hover img {
     transform: scale(1.2) rotate(5deg);
-    /* Ảnh phóng to và xoay nhẹ */
 }
 
-/* 10. FAQ (Nền Trắng) */
+/* 10. FAQ */
 #faq {
     background-color: var(--bg-white);
 }
@@ -781,7 +747,6 @@ section {
 .accordion-item {
     border: none;
     background: var(--bg-main);
-    /* Nền câu hỏi xám nhạt */
     border-radius: 15px !important;
     margin-bottom: 15px;
     overflow: hidden;
@@ -837,23 +802,20 @@ section {
     margin-bottom: 0 !important;
 }
 
-/* Hiệu ứng icon khi focus vào input */
 .input-icon-wrapper:focus-within i {
     color: var(--tertiary);
     transform: translateY(-50%) scale(1.2);
 }
 
-/* 11. FOOTER PRO DESIGN (SIMPLIFIED) */
+/* 11. FOOTER PRO DESIGN  */
 #footer {
     background: #0f172a;
-    /* Dark Navy - Màu tối sang trọng */
     color: #fff;
     font-size: 14px;
     position: relative;
     overflow: hidden;
 }
 
-/* Họa tiết nền chấm bi mờ */
 #footer::before {
     content: '';
     position: absolute;
@@ -875,7 +837,6 @@ section {
 
 #footer .footer-info h3 {
     font-size: 32px;
-    /* Tăng kích thước Logo text */
     margin: 0 0 20px 0;
     padding: 2px 0 2px 0;
     line-height: 1;
@@ -896,7 +857,6 @@ section {
 #footer .social-links a {
     font-size: 18px;
     display: flex;
-    /* Căn giữa icon */
     align-items: center;
     justify-content: center;
     background: rgba(255, 255, 255, 0.05);
@@ -905,7 +865,6 @@ section {
     margin-right: 8px;
     border-radius: 50%;
     width: 45px;
-    /* Tăng kích thước nút */
     height: 45px;
     transition: 0.3s;
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -1002,7 +961,6 @@ section {
 
     .contact-item {
         justify-content: flex-start;
-        /* Mobile vẫn căn trái cho dễ đọc */
     }
 }
 
@@ -1079,125 +1037,6 @@ section {
     text-align: left;
     border: 1px solid rgba(255, 255, 255, 0.5);
     animation: fadeInUp 0.5s ease-out;
-}
-
-.order-header {
-    border-bottom: 2px dashed #eee;
-    padding-bottom: 20px;
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 15px;
-}
-
-.order-id {
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: var(--headline);
-    font-family: var(--font-secondary);
-}
-
-.order-status {
-    padding: 5px 15px;
-    border-radius: 20px;
-    font-weight: bold;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-}
-
-.status-done {
-    background: #d4edda;
-    color: #155724;
-}
-
-.status-transport {
-    background: #cce5ff;
-    color: #004085;
-}
-
-.status-process {
-    background: #fff3cd;
-    color: #856404;
-}
-
-.status-cancel {
-    background: #f8d7da;
-    color: #721c24;
-}
-
-.order-info p {
-    margin-bottom: 10px;
-    font-size: 1rem;
-    color: var(--paragraph);
-}
-
-.order-info strong {
-    color: var(--headline);
-    width: 140px;
-    display: inline-block;
-}
-
-/* Timeline Style */
-.timeline {
-    position: relative;
-    padding-left: 30px;
-    margin-top: 30px;
-    border-left: 2px solid #ddd;
-}
-
-.timeline-item {
-    position: relative;
-    padding-bottom: 30px;
-}
-
-.timeline-item:last-child {
-    padding-bottom: 0;
-}
-
-.timeline-item::before {
-    content: '';
-    position: absolute;
-    left: -38px;
-    top: 0;
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    background: #fff;
-    border: 3px solid #ccc;
-    z-index: 1;
-}
-
-.timeline-item.active::before {
-    background: var(--accent);
-    border-color: var(--accent);
-    box-shadow: 0 0 0 4px rgba(255, 142, 60, 0.2);
-}
-
-.timeline-date {
-    font-size: 0.85rem;
-    color: #888;
-    margin-bottom: 5px;
-}
-
-.timeline-content {
-    background: #f8f9fa;
-    padding: 15px;
-    border-radius: 10px;
-    position: relative;
-}
-
-.timeline-item.active .timeline-content {
-    background: #fff5eb;
-    /* Active highlight */
-    border: 1px solid var(--accent);
-}
-
-.timeline-title {
-    font-weight: bold;
-    color: var(--headline);
-    margin-bottom: 5px;
 }
 
 @keyframes fadeInUp {

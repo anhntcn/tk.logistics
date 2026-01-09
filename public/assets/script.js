@@ -68,14 +68,15 @@ $(document).ready(function () {
             {
                 breakpoint: 992,
                 settings: {
-                    slidesToShow: 3
+                    slidesToShow: 2
                 }
             },
             {
                 breakpoint: 550,
                 settings: {
-                    slidesToShow: 2,
-                    arrows: false
+                    slidesToShow: 1,
+                    arrows: false,
+                    dots: true
                 }
             }
         ],
@@ -91,6 +92,11 @@ $(document).ready(function () {
             lenis.scrollTo(hash, {
                 offset: -70
             });
+
+            // Đóng menu trên mobile sau khi click (nếu đang mở)
+            if ($('.navbar-collapse').hasClass('show')) {
+                $('.navbar-collapse').collapse('hide');
+            }
         }
     });
 
@@ -139,6 +145,16 @@ $(document).ready(function () {
             }
         });
     });
+
+    // Responsive AOS Delay for Process Steps (Desktop only)
+    if (window.innerWidth >= 768) {
+        $('.step-wrapper').each(function (index) {
+            $(this).attr('data-aos-delay', (index + 1) * 100);
+        });
+        $('.step-arrow').each(function (index) {
+            $(this).attr('data-aos-delay', (index + 1) * 100 + 50);
+        });
+    }
 
     // Tải AOS
     AOS.init({
