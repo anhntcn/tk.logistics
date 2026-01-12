@@ -174,18 +174,22 @@ header.header-scrolled {
 
 .navbar {
     background: transparent;
-    padding: 15px 0;
+    padding: 10px 0;
     transition: padding 0.3s;
 }
 
 header.header-scrolled .navbar {
-    padding: 10px 0;
+    padding: 5px 0;
 }
 
 .navbar-brand {
     color: var(--white) !important;
     font-size: 1.5rem;
     font-weight: 800;
+}
+
+.navbar-brand img {
+    height: 45px;
 }
 
 .nav-link {
@@ -915,6 +919,11 @@ section {
 .contact-item i {
     width: 40px;
     text-align: center;
+}
+
+.footer-logo {
+    height: 80px;
+    margin-bottom: 20px;
 }
 
 /* Footer Bottom */
